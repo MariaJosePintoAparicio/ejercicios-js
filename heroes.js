@@ -76,6 +76,8 @@ const heroes =[
     }
 ]
 const id1 = '5d86371fd55e2e2a30fe1ccb1';
+const id2 = '5d86371f2343e37870b91ef1';
+const id3 = '5d86371fd55e2e2a30fe1cc3';
 /**
  * @param {String} id
  * @param { (error:String|null, hero:Object)=>void} callback 
@@ -95,6 +97,19 @@ const valor = (id1,(error,hero)=>{
         console.log(error);
         return;
     }
-    console.log(`${hero.name}`);
+    findHero(id2,(error,hero2) => {
+        if (error){
+            console.log(error);
+            return
+        }
+        findHero(id3,(error,hero3) => {
+            if (error){
+                console.log(error);
+                return
+            }
+            console.log(`${hero.name} -- ${hero2.name } -- ${hero3.name}`);
+        });
+    });
+
 })
 findHero(id1,(null,valor));
